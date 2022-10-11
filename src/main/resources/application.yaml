@@ -1,0 +1,40 @@
+context-path: ${APIGateway.context-path}
+
+server:
+  port: ${APIGateway.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+spring:
+  application:
+    name: @project.build.finalName@
+    gateway:
+      routes:
+      - id: UserProvisioningService
+        uri: ${UserProvisioningService.url}
+        predicates:
+        - Path=${context-path}${UserProvisioningService.context-path}/**
+        filters:
+        - StripPrefix=1
+      - id: UserService
+        uri: ${UserService.url}
+        predicates:
+          - Path=${context-path}${UserService.context-path}/**
+        filters:
+          - StripPrefix=1
+      - id: GoalService
+        uri: ${GoalService.url}
+        predicates:
+          - Path=${context-path}${GoalService.context-path}/**
+        filters:
+          - StripPrefix=1
+      - id: EventService
+        uri: ${EventService.url}
+        predicates:
+          - Path=${context-path}${EventService.context-path}/**
+        filters:
+          - StripPrefix=1
