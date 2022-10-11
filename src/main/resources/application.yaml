@@ -5,13 +5,16 @@ server:
 
 management:
   endpoints:
+    gateway:
+      enabled: true
     web:
       exposure:
-        include: gateway
+        include: health,gateway
 
 spring:
   application:
     name: @project.build.finalName@
+  cloud:
     gateway:
       routes:
       - id: UserProvisioningService
