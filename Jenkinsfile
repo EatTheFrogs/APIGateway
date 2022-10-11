@@ -53,7 +53,7 @@ pipeline {
                     echo Generating jar file...
                     mvn -DskipTests=true package
                     echo Building tag "$TAG_NAME" for "$REPO_NAME"...
-                    cp /projects/eatthefrog/Dockerfile ./Dockerfile
+                    cp "$EAT_THE_FROG_DIRECTORY"/Dockerfile ./Dockerfile
                     docker build -t "$DOCKER_IMAGE_NAME" -t "$DOCKER_IMAGE_NAME_LATEST" .
                     echo "$DOCKERHUB_PSW" | docker login --username="$DOCKERHUB_USR" --password-stdin
                     docker push "$DOCKER_IMAGE_NAME"
@@ -78,8 +78,9 @@ pipeline {
                     finally {
                         sh '''
                             echo Deploying version "$TAG_NAME" of "$REPO_NAME"
-                            cp /projects/eatthefrog/docker-compose.yaml ./docker-compose.yaml
-                            docker-compose up "$REPO_NAME" -d
+                            cp "$EAT_THE_FROG_DIRECTORY"/docker-compose.yaml ./docker-compose.yaml
+                            cp "$EAT_THE_FROG_DIRECTORY"/.env ./.env
+                            docker-compose up -d "$REPO_NAME"
                         '''
                     }
                 }
