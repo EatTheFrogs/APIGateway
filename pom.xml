@@ -9,13 +9,13 @@
 	</parent>
 	<groupId>com.eatthefrog</groupId>
 	<artifactId>APIGateway</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.5</version>
 	<name>APIGateway</name>
 	<scm>
 		<connection>scm:git:${project.scm.url}</connection>
 		<developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/EatTheFrogs/APIGateway.git</url>
-		<tag>HEAD</tag>
+		<tag>v0.0.5</tag>
 	</scm>
 	<properties>
 		<java.version>17</java.version>
