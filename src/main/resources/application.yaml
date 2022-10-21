@@ -16,6 +16,10 @@ spring:
     name: @project.build.finalName@
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
       routes:
       - id: UserProvisioningService
         uri: ${UserProvisioningService.url}
