@@ -17,14 +17,12 @@ spring:
   cloud:
     gateway:
       globalcors:
+        add-to-simple-url-handler-mapping: true
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PATCH
-              - DELETE
+            allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
       - id: UserProvisioningService
         uri: ${UserProvisioningService.url}
