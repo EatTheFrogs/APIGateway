@@ -20,6 +20,11 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PATCH
+              - DELETE
       routes:
       - id: UserProvisioningService
         uri: ${UserProvisioningService.url}
