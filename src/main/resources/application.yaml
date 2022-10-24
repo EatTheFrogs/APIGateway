@@ -48,3 +48,9 @@ spring:
           - Path=${context-path}${EventService.context-path}/**
         filters:
           - StripPrefix=1
+      - id: EventTemplateService
+        uri: ${EventTemplateService.url}
+        predicates:
+          - Path=${context-path}${EventTemplateService.context-path}/**
+        filters:
+          - StripPrefix=1
